@@ -411,18 +411,10 @@
   </div>
 
   <!-- Optional background music (replace with your own MP3 file name) -->
-  <!-- Hidden YouTube Player -->
-  <div id="ytContainer" style="display:none;">
-    <iframe
-            id="ytFrame"
-            width="0"
-            height="0"
-            src=""
-            frameborder="0"
-            allow="autoplay"
-            allowfullscreen>
-    </iframe>
-  </div>
+  <audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
 
 
   <script>
@@ -572,28 +564,26 @@
 
     $("confettiBtn").addEventListener("click", () => spawnHeart(35));
 
-    // YouTube Music - Tujhe Dekha To Yeh Jaana Sanam
-    let ytPlaying = false;
-    const ytFrame = document.getElementById("ytFrame");
+    // Local Music Player
+    const audio = document.getElementById("bgMusic");
     const playBtn = document.getElementById("startMusicBtn");
+    let isPlaying = false;
 
     playBtn.addEventListener("click", () => {
 
-      if (!ytPlaying) {
-        ytFrame.src =
-          "https://www.youtube.com/embed/Tq52ew1vM4I?autoplay=1&loop=1&playlist=Tq52ew1vM4I";
-
-        ytPlaying = true;
+      if (!isPlaying) {
+        audio.play();
+        isPlaying = true;
         playBtn.textContent = "Pause 🎶";
-        spawnHeart(30);
-
+        spawnHeart(25);
       } else {
-        ytFrame.src = "";
-        ytPlaying = false;
+        audio.pause();
+        isPlaying = false;
         playBtn.textContent = "Play our vibe 🎶";
       }
 
     });
+
 
 
 
@@ -628,15 +618,7 @@
 
   </script>
   <!-- YouTube Background Music (Tujhe Dekha To Yeh Jaana Sanam) -->
-  <iframe
-          width="0"
-          height="0"
-          src="https://www.youtube.com/embed/Tq52ew1vM4I?autoplay=1&loop=1&playlist=Tq52ew1vM4I&controls=0&mute=0"
-          title="YouTube video player"
-          frameborder="0"
-          allow="autoplay; encrypted-media"
-          allowfullscreen
-  ></iframe>
+
 
 </body>
 </html>
