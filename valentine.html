@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Valentine’s Day ❤️</title>
+  <style>
+    :root{
+      --bg1:#0f0b12;
+      --bg2:#1b0f1a;
+      --card:#151018cc;
+      --text:#fff;
+      --muted:#cfc6d6;
+      --accent:#ff4d7d;
+      --accent2:#ffb3c7;
+      --ring:rgba(255,77,125,.35);
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 22px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 700px at 20% 10%, #3a1331 0%, transparent 55%),
+                  radial-gradient(900px 600px at 80% 20%, #1c2b5a 0%, transparent 60%),
+                  linear-gradient(160deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+    a{color:inherit}
+    .wrap{max-width:1050px;margin:0 auto;padding:28px 18px 70px}
+    header{
+      position:relative;
+      padding:22px 18px 18px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(255,77,125,.18), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    header:before{
+      content:"";
+      position:absolute; inset:-80px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,77,125,.40), transparent 55%),
+                  radial-gradient(circle at 75% 35%, rgba(255,179,199,.25), transparent 60%);
+      filter: blur(25px);
+      opacity:.75;
+      pointer-events:none;
+    }
+    .top{
+      display:flex; gap:18px; align-items:center; justify-content:space-between;
+      position:relative;
+    }
+    .brand{
+      display:flex; gap:12px; align-items:center;
+    }
+    .heart{
+      width:44px; height:44px;
+      border-radius:14px;
+      background: linear-gradient(145deg, rgba(255,77,125,.9), rgba(255,179,199,.75));
+      box-shadow: 0 14px 30px rgba(255,77,125,.25);
+      display:grid; place-items:center;
+      transform: rotate(-8deg);
+    }
+    .heart span{font-size:22px; filter: drop-shadow(0 6px 8px rgba(0,0,0,.35));}
+    h1{margin:0;font-size: clamp(22px, 4vw, 34px); letter-spacing:.2px;}
+    .sub{margin:6px 0 0; color:var(--muted); line-height:1.4; font-size:14.5px;}
+    .btnRow{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    button, .pill{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius: 999px;
+      cursor:pointer;
+      transition: transform .12s ease, background .2s ease, border-color .2s ease;
+      font-weight:650;
+      letter-spacing:.2px;
+    }
+    button:hover, .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.22);}
+    button.primary{
+      background: linear-gradient(135deg, rgba(255,77,125,.95), rgba(255,179,199,.8));
+      border-color: rgba(255,179,199,.55);
+      color:#200412;
+    }
+    button.primary:hover{background: linear-gradient(135deg, rgba(255,77,125,1), rgba(255,179,199,.92));}
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns: 1fr;}
+      .btnRow{justify-content:flex-start}
+    }
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .cardGlow:before{
+      content:"";
+      position:absolute; inset:-120px;
+      background: radial-gradient(circle at 15% 20%, rgba(255,77,125,.25), transparent 55%),
+                  radial-gradient(circle at 85% 30%, rgba(120,165,255,.18), transparent 55%);
+      filter: blur(25px);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .card > *{position:relative}
+    .kpis{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:10px;
+      margin-top:14px;
+    }
+    @media (max-width: 520px){ .kpis{grid-template-columns:1fr;}}
+    .kpi{
+      padding:12px 12px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .kpi .label{color:var(--muted); font-size:12px; margin-bottom:6px}
+    .kpi .value{font-size:18px; font-weight:780}
+    .bigMsg{
+      font-size: clamp(18px, 2.6vw, 22px);
+      line-height:1.45;
+      margin: 6px 0 0;
+    }
+    .muted{color:var(--muted)}
+    .sectionTitle{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      margin:0 0 12px;
+    }
+    .sectionTitle h2{margin:0; font-size:16px; letter-spacing:.2px}
+    .chips{display:flex; gap:8px; flex-wrap:wrap}
+    .pill{font-size:12.5px; padding:8px 10px; cursor:default}
+    .list{
+      display:grid; gap:10px;
+    }
+    .reason{
+      padding:12px 12px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+      display:flex; gap:10px; align-items:flex-start;
+    }
+    .badge{
+      width:34px; height:34px;
+      border-radius: 12px;
+      background: rgba(255,77,125,.18);
+      border:1px solid rgba(255,77,125,.35);
+      display:grid; place-items:center;
+      flex:0 0 auto;
+      box-shadow: 0 10px 20px rgba(255,77,125,.10);
+    }
+    .badge span{font-size:16px}
+    .reason b{display:block; margin-bottom:4px}
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:10px;
+    }
+    @media (max-width: 520px){ .gallery{grid-template-columns: repeat(2, minmax(0, 1fr));}}
+    .ph{
+      aspect-ratio: 1 / 1;
+      border-radius: 18px;
+      background: rgba(255,255,255,.05);
+      border:1px dashed rgba(255,255,255,.18);
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      position:relative;
+      cursor:pointer;
+    }
+    .ph img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.02);
+      filter: saturate(1.05);
+    }
+    .ph:after{
+      content:"Tap";
+      position:absolute; bottom:8px; right:8px;
+      font-size:11px;
+      padding:6px 8px;
+      border-radius:999px;
+      background: rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.14);
+      opacity:.0;
+      transition:.2s ease;
+    }
+    .ph:hover:after{opacity:.9}
+    .modal{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.6);
+      display:none;
+      align-items:center; justify-content:center;
+      padding:18px;
+      z-index:50;
+    }
+    .modal.open{display:flex}
+    .modalContent{
+      max-width:920px; width:100%;
+      border-radius: 22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: var(--shadow);
+      background: rgba(10,8,12,.85);
+      backdrop-filter: blur(10px);
+    }
+    .modalTop{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    .modalTop b{font-size:13px; color:var(--muted)}
+    .modalTop button{padding:8px 10px; font-size:13px}
+    .modalImg{
+      width:100%;
+      max-height:72vh;
+      display:block;
+      object-fit:contain;
+      background:#050408;
+    }
+
+    /* floating hearts */
+    .floaters{
+      position:fixed; inset:0;
+      pointer-events:none;
+      z-index:1;
+      overflow:hidden;
+      opacity:.75;
+    }
+    .floater{
+      position:absolute;
+      bottom:-60px;
+      font-size:16px;
+      filter: drop-shadow(0 10px 10px rgba(0,0,0,.35));
+      animation: rise linear forwards;
+      opacity:.85;
+    }
+    @keyframes rise{
+      from{transform: translateY(0) translateX(0) scale(1); opacity:.0}
+      8%{opacity:.85}
+      to{transform: translateY(-110vh) translateX(var(--drift)) scale(var(--scale)); opacity:0}
+    }
+
+    footer{
+      margin-top:16px;
+      text-align:center;
+      color: rgba(255,255,255,.55);
+      font-size:12.5px;
+    }
+    .hidden{display:none}
+    .loveNote{
+      margin-top:12px;
+      padding:14px;
+      border-radius: 18px;
+      background: rgba(255,77,125,.08);
+      border:1px solid rgba(255,77,125,.22);
+      line-height:1.55;
+    }
+    .yesNo{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:12px;
+    }
+    .noBtn{position:relative}
+  </style>
+</head>
+
+<body>
+  <!-- Floating hearts layer -->
+  <div class="floaters" id="floaters"></div>
+
+  <div class="wrap">
+    <header>
+      <div class="top">
+        <div class="brand">
+          <div class="heart"><span>❤</span></div>
+          <div>
+            <h1 id="title">Happy Valentine’s Day, My Love ❤️</h1>
+            <p class="sub" id="subtitle">A tiny website made with big feelings.</p>
+          </div>
+        </div>
+
+        <div class="btnRow">
+          <button class="primary" id="startMusicBtn">Play our vibe 🎶</button>
+          <button id="confettiBtn">More hearts ✨</button>
+          <button id="copyLinkBtn" title="Copies a shareable text you can send">Copy message 📩</button>
+        </div>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi">
+          <div class="label">Together since</div>
+          <div class="value" id="sinceText">—</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Days of us</div>
+          <div class="value" id="daysTogether">—</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Next date in</div>
+          <div class="value" id="nextDateCountdown">—</div>
+        </div>
+      </div>
+
+      <p class="bigMsg" id="heroMsg">
+        I don’t need a perfect day—just <b>you</b>. So I made this little page to remind you how loved you are.
+      </p>
+
+      <div class="loveNote hidden" id="secretNote">
+        <b>Secret note:</b> <span id="secretText"></span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card cardGlow">
+        <div class="sectionTitle">
+          <h2>Reasons I love you</h2>
+          <div class="chips" id="chips"></div>
+        </div>
+        <div class="list" id="reasonsList"></div>
+
+        <div class="yesNo">
+          <button class="primary" id="yesBtn">Will you be my Valentine? 💘 Yes</button>
+          <button class="noBtn" id="noBtn">No 😶</button>
+        </div>
+
+        <div class="loveNote hidden" id="answerBox"></div>
+      </section>
+
+      <section class="card cardGlow">
+        <div class="sectionTitle">
+          <h2>Our mini gallery</h2>
+          <span class="muted" style="font-size:12.5px">Click a photo</span>
+        </div>
+        <div class="gallery" id="gallery"></div>
+
+        <div class="loveNote">
+          <b id="promiseTitle">A promise</b><br/>
+          <span id="promiseText">I’ll keep choosing you—on busy days, on lazy days, on every day.</span>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      Made with ❤ in a browser — open this file on your phone/laptop and it works.
+    </footer>
+  </div>
+
+  <!-- Image modal -->
+  <div class="modal" id="modal">
+    <div class="modalContent">
+      <div class="modalTop">
+        <b id="modalLabel">Memory</b>
+        <button id="closeModal">Close</button>
+      </div>
+      <img class="modalImg" id="modalImg" alt="Photo preview"/>
+    </div>
+  </div>
+
+  <!-- Optional background music (replace with your own MP3 file name) -->
+  <audio id="bgMusic" loop preload="none">
+    <!-- Put a file called "song.mp3" in the same folder as this HTML OR replace the src with your own -->
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    /***********************
+     * EDIT THESE SETTINGS *
+     ***********************/
+    const CONFIG = {
+      herName: "Shraddha",          // <-- change to your gf name
+      yourName: "Samyak",           // <-- change to your name
+      togetherSince: "2024-01-01",  // <-- YYYY-MM-DD (your anniversary/start date)
+      nextDateTime: "2026-02-14T19:30:00", // <-- next date night (local time)
+      secretNote: "You’re my favorite person, my safest place, and my best decision. Always. 💗",
+
+      // Short tags shown on top
+      chips: ["Cute", "Strong", "My peace", "My home", "Best smile"],
+
+      // Reasons list (edit freely)
+      reasons: [
+        {icon:"✨", title:"You make life lighter", text:"Even normal days feel special with you."},
+        {icon:"🌙", title:"You understand me", text:"In a way that feels calm and warm."},
+        {icon:"😂", title:"Your laugh is my favorite sound", text:"Instant mood upgrade."},
+        {icon:"🤍", title:"You’re kind", text:"And it shows in everything you do."},
+        {icon:"🔥", title:"You inspire me", text:"To be better, to try more, to love deeper."},
+        {icon:"🏡", title:"You feel like home", text:"No matter where we are."},
+      ],
+
+      // Gallery images: replace with your photo URLs or file names in same folder
+      // Example: "photo1.jpg", "photo2.jpg"
+      photos: [
+        {src:"photo1.jpg", label:"Us 💕"},
+        {src:"photo2.jpg", label:"That day 😍"},
+        {src:"photo3.jpg", label:"My favorite view"},
+        {src:"photo4.jpg", label:"Cute moment"},
+        {src:"photo5.jpg", label:"Forever vibes"},
+        {src:"photo6.jpg", label:"Always you"},
+      ],
+
+      // Promise card
+      promiseTitle: "A promise",
+      promiseText: "I’ll keep choosing you—on busy days, on lazy days, on every day.",
+
+      // Copy/share text
+      shareText: (herName, yourName) =>
+        `Hey ${herName} ❤️\nI made a small Valentine page for you.\nOpen valentine.html on your phone/laptop.\n\n— ${yourName}`
+    };
+
+    /***********************
+     * PAGE WIRING         *
+     ***********************/
+    const $ = (id) => document.getElementById(id);
+
+    // Set header text
+    $("title").textContent = `Happy Valentine’s Day, ${CONFIG.herName} ❤️`;
+    $("subtitle").textContent = `Made by ${CONFIG.yourName} — just to see you smile.`;
+    $("secretText").textContent = CONFIG.secretNote;
+    $("promiseTitle").textContent = CONFIG.promiseTitle;
+    $("promiseText").textContent = CONFIG.promiseText;
+
+    // Chips
+    const chipsWrap = $("chips");
+    CONFIG.chips.forEach(c => {
+      const el = document.createElement("span");
+      el.className = "pill";
+      el.textContent = c;
+      chipsWrap.appendChild(el);
+    });
+
+    // Reasons
+    const reasonsWrap = $("reasonsList");
+    CONFIG.reasons.forEach((r, idx) => {
+      const row = document.createElement("div");
+      row.className = "reason";
+      row.innerHTML = `
+        <div class="badge"><span>${r.icon || "❤"}</span></div>
+        <div>
+          <b>${idx+1}. ${r.title}</b>
+          <div class="muted">${r.text}</div>
+        </div>`;
+      reasonsWrap.appendChild(row);
+    });
+
+    // Gallery
+    const gal = $("gallery");
+    CONFIG.photos.forEach((p, i) => {
+      const cell = document.createElement("div");
+      cell.className = "ph";
+      cell.title = p.label || `Photo ${i+1}`;
+      // if image missing, it will just show broken icon; you can replace src with real
+      cell.innerHTML = `<img src="${p.src}" alt="${p.label || "photo"}">`;
+      cell.addEventListener("click", () => openModal(p.src, p.label || `Memory ${i+1}`));
+      gal.appendChild(cell);
+    });
+
+    // Modal logic
+    const modal = $("modal");
+    const modalImg = $("modalImg");
+    function openModal(src, label){
+      $("modalLabel").textContent = label;
+      modalImg.src = src;
+      modal.classList.add("open");
+    }
+    function closeModal(){
+      modal.classList.remove("open");
+      modalImg.src = "";
+    }
+    $("closeModal").addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
+
+    // Date calculations
+    function formatDate(d){
+      return d.toLocaleDateString(undefined, {year:"numeric", month:"short", day:"numeric"});
+    }
+
+    const since = new Date(CONFIG.togetherSince + "T00:00:00");
+    $("sinceText").textContent = formatDate(since);
+
+    function updateCounters(){
+      const now = new Date();
+      const days = Math.floor((now - since) / (1000*60*60*24));
+      $("daysTogether").textContent = (days >= 0 ? days : 0).toString();
+
+      const next = new Date(CONFIG.nextDateTime);
+      let diff = next - now;
+
+      if (isNaN(next.getTime())){
+        $("nextDateCountdown").textContent = "Set a date 💌";
+      } else if (diff <= 0){
+        $("nextDateCountdown").textContent = "Today 😍";
+      } else {
+        const d = Math.floor(diff / (1000*60*60*24));
+        diff -= d*(1000*60*60*24);
+        const h = Math.floor(diff / (1000*60*60));
+        diff -= h*(1000*60*60);
+        const m = Math.floor(diff / (1000*60));
+        $("nextDateCountdown").textContent = `${d}d ${h}h ${m}m`;
+      }
+    }
+    updateCounters();
+    setInterval(updateCounters, 20_000);
+
+    // Hearts animation
+    const floaters = $("floaters");
+    function spawnHeart(amount = 18){
+      const hearts = ["❤","💖","💘","💗","💞","💕","✨"];
+      for(let i=0;i<amount;i++){
+        const el = document.createElement("div");
+        el.className = "floater";
+        el.textContent = hearts[Math.floor(Math.random()*hearts.length)];
+        const left = Math.random()*100;
+        const size = 12 + Math.random()*18;
+        const duration = 6 + Math.random()*6;
+        el.style.left = left + "vw";
+        el.style.fontSize = size + "px";
+        el.style.animationDuration = duration + "s";
+        el.style.setProperty("--drift", (Math.random()*120 - 60) + "px");
+        el.style.setProperty("--scale", (0.9 + Math.random()*0.9).toFixed(2));
+        floaters.appendChild(el);
+        setTimeout(() => el.remove(), duration*1000);
+      }
+    }
+    // Initial gentle hearts
+    spawnHeart(10);
+    setInterval(() => spawnHeart(2), 1800);
+
+    $("confettiBtn").addEventListener("click", () => spawnHeart(35));
+
+    // Music
+    const audio = $("bgMusic");
+    let playing = false;
+    $("startMusicBtn").addEventListener("click", async () => {
+      try{
+        if(!playing){
+          await audio.play();
+          playing = true;
+          $("startMusicBtn").textContent = "Pause 🎶";
+          $("secretNote").classList.remove("hidden");
+          spawnHeart(25);
+        } else {
+          audio.pause();
+          playing = false;
+          $("startMusicBtn").textContent = "Play our vibe 🎶";
+        }
+      } catch(err){
+        alert("Music couldn’t start (browser block). Add a song.mp3 in the same folder, then click again.");
+      }
+    });
+
+    // Copy share message
+    $("copyLinkBtn").addEventListener("click", async () => {
+      const txt = CONFIG.shareText(CONFIG.herName, CONFIG.yourName);
+      try{
+        await navigator.clipboard.writeText(txt);
+        $("copyLinkBtn").textContent = "Copied ✅";
+        setTimeout(()=> $("copyLinkBtn").textContent = "Copy message 📩", 1400);
+      } catch(e){
+        prompt("Copy this message:", txt);
+      }
+    });
+
+    // Valentine question
+    const answerBox = $("answerBox");
+    $("yesBtn").addEventListener("click", () => {
+      answerBox.classList.remove("hidden");
+      answerBox.innerHTML = `YAYYY 💖<br/>Okay ${CONFIG.herName}, it’s official: you’re my Valentine forever. <br/><span class="muted">Now come here… 🫶</span>`;
+      spawnHeart(50);
+    });
+
+    // No button runs away 😄
+    const noBtn = $("noBtn");
+    noBtn.addEventListener("mouseenter", moveNo);
+    noBtn.addEventListener("click", moveNo);
+
+    function moveNo(){
+      const btn = noBtn;
+      const parent = btn.parentElement.getBoundingClientRect();
+      const maxX = parent.width - btn.offsetWidth;
+      const maxY = 120; // keep it near the buttons row
+
+      const x = Math.max(0, Math.min(maxX, Math.random()*maxX));
+      const y = Math.max(-10, Math.min(maxY, (Math.random()*maxY) - 10));
+
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+      btn.textContent = ["No 🙃","Nope 😅","Try again 😌","Not allowed 😤","Hehe 😄"][Math.floor(Math.random()*5)];
+    }
+
+    // Personalize hero message slightly
+    const hero = $("heroMsg");
+    hero.innerHTML = `Hey <b>${CONFIG.herName}</b> — I don’t need a perfect day—just <b>you</b>. So I made this little page to remind you how loved you are.`;
+
+  </script>
+</body>
+</html>
