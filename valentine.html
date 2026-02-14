@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Valentine’s Day ❤️</title>
+  <title>Will you be my Valentine ?️</title>
   <style>
     :root{
       --bg1:#0f0b12;
@@ -21,13 +21,20 @@
     html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background: radial-gradient(1200px 700px at 20% 10%, #3a1331 0%, transparent 55%),
-                  radial-gradient(900px 600px at 80% 20%, #1c2b5a 0%, transparent 60%),
-                  linear-gradient(160deg, var(--bg1), var(--bg2));
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:#fff;
+
+      background:
+        linear-gradient(rgba(150,0,0,0.85), rgba(200,0,0,0.85)),
+        url('https://www.freepik.com/free-photo/rose-flower-white-isolated_7122340.htm#fromView=keyword&page=1&position=3&uuid=09004d02-8e30-4304-a360-7623950a0d64&query=Rose');
+
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+
       overflow-x:hidden;
     }
+
     a{color:inherit}
     .wrap{max-width:1050px;margin:0 auto;padding:28px 18px 70px}
     header{
@@ -88,7 +95,7 @@
     .grid{
       margin-top:18px;
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: 0.6fr 1.4fr;
       gap:16px;
     }
     @media (max-width: 900px){
@@ -96,7 +103,8 @@
       .btnRow{justify-content:flex-start}
     }
     .card{
-      background: var(--card);
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(6px);
       border: 1px solid rgba(255,255,255,.10);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -166,38 +174,44 @@
     .gallery{
       display:grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap:10px;
+      gap:12px;
     }
-    @media (max-width: 520px){ .gallery{grid-template-columns: repeat(2, minmax(0, 1fr));}}
+
+    /* each tile */
     .ph{
-      aspect-ratio: 1 / 1;
       border-radius: 18px;
       background: rgba(255,255,255,.05);
       border:1px dashed rgba(255,255,255,.18);
-      display:grid;
-      place-items:center;
-      overflow:hidden;
-      position:relative;
+      padding:10px;
       cursor:pointer;
     }
-    .ph img{
-      width:100%; height:100%;
+
+    /* image box size controlled here */
+    .photoFrame{
+      width:100%;
+      aspect-ratio: 4 / 3;   /* smaller than 16/10 */
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .photoFrame img{
+      width:100%;
+      height:100%;
       object-fit:cover;
       display:block;
-      transform: scale(1.02);
-      filter: saturate(1.05);
     }
-    .ph:after{
-      content:"Tap";
-      position:absolute; bottom:8px; right:8px;
-      font-size:11px;
-      padding:6px 8px;
-      border-radius:999px;
-      background: rgba(0,0,0,.35);
-      border:1px solid rgba(255,255,255,.14);
-      opacity:.0;
-      transition:.2s ease;
+
+    /* label below image */
+    .photoLabel{
+      text-align:center;
+      margin-top:8px;
+      font-size:14px;
+      font-weight:650;
+      color:#fff;
     }
+
+
     .ph:hover:after{opacity:.9}
     .modal{
       position:fixed; inset:0;
@@ -269,11 +283,49 @@
       border:1px solid rgba(255,77,125,.22);
       line-height:1.55;
     }
-    .yesNo{
+    yesNo{
       display:flex; gap:10px; flex-wrap:wrap;
       margin-top:12px;
     }
+
     .noBtn{position:relative}
+    .photoLabel{
+      text-align:center;
+      margin-top:8px;
+      font-size:14px;
+      color:#fff;
+      font-weight:500;
+    }
+    .valentineBox{
+      margin-top:30px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .valentineCard{
+      width:100%;
+      max-width:700px;
+      text-align:center;
+      padding:25px;
+      border-radius:22px;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(8px);
+      border:1px solid rgba(255,255,255,.15);
+      box-shadow: 0 20px 60px rgba(0,0,0,.45);
+    }
+
+    .valentineCard h2{
+      margin-top:0;
+      margin-bottom:20px;
+      font-size:24px;
+    }
+
+    .bigBtn{
+      padding:14px 28px;
+      font-size:18px;
+    }
+
+
   </style>
 </head>
 
@@ -287,35 +339,22 @@
         <div class="brand">
           <div class="heart"><span>❤</span></div>
           <div>
-            <h1 id="title">Happy Valentine’s Day, My Love ❤️</h1>
-            <p class="sub" id="subtitle">A tiny website made with big feelings.</p>
+            <h1 id="title">Will you be my Valentine ? ❤️</h1>
+            <p class="sub" id="subtitle">Just a simple way to ask you out.</p>
           </div>
         </div>
 
         <div class="btnRow">
           <button class="primary" id="startMusicBtn">Play our vibe 🎶</button>
           <button id="confettiBtn">More hearts ✨</button>
-          <button id="copyLinkBtn" title="Copies a shareable text you can send">Copy message 📩</button>
+
         </div>
       </div>
 
-      <div class="kpis">
-        <div class="kpi">
-          <div class="label">Together since</div>
-          <div class="value" id="sinceText">—</div>
-        </div>
-        <div class="kpi">
-          <div class="label">Days of us</div>
-          <div class="value" id="daysTogether">—</div>
-        </div>
-        <div class="kpi">
-          <div class="label">Next date in</div>
-          <div class="value" id="nextDateCountdown">—</div>
-        </div>
-      </div>
+
 
       <p class="bigMsg" id="heroMsg">
-        I don’t need a perfect day—just <b>you</b>. So I made this little page to remind you how loved you are.
+        I don’t need a perfect day, just <b>you</b>. So I made this little thing to remind you how loved you are.
       </p>
 
       <div class="loveNote hidden" id="secretNote">
@@ -331,15 +370,9 @@
         </div>
         <div class="list" id="reasonsList"></div>
 
-        <div class="yesNo">
-          <button class="primary" id="yesBtn">Will you be my Valentine? 💘 Yes</button>
-          <button class="noBtn" id="noBtn">No 😶</button>
-        </div>
-
-        <div class="loveNote hidden" id="answerBox"></div>
       </section>
 
-      <section class="card cardGlow">
+        <section class="card cardGlow">
         <div class="sectionTitle">
           <h2>Our mini gallery</h2>
           <span class="muted" style="font-size:12.5px">Click a photo</span>
@@ -351,11 +384,19 @@
           <span id="promiseText">I’ll keep choosing you—on busy days, on lazy days, on every day.</span>
         </div>
       </section>
-    </div>
 
-    <footer>
-      Made with ❤ in a browser — open this file on your phone/laptop and it works.
-    </footer>
+    </div>
+    <!-- Valentine Section -->
+    <section class="valentineBox">
+      <div class="valentineCard">
+        <h2>Will You Be My Valentine? 💖</h2>
+        <div class="yesNo">
+          <button class="primary bigBtn" id="yesBtn">Yes 💘</button>
+          <button class="noBtn bigBtn" id="noBtn">No 😶</button>
+        </div>
+      </div>
+    </section>
+
   </div>
 
   <!-- Image modal -->
@@ -370,10 +411,19 @@
   </div>
 
   <!-- Optional background music (replace with your own MP3 file name) -->
-  <audio id="bgMusic" loop preload="none">
-    <!-- Put a file called "song.mp3" in the same folder as this HTML OR replace the src with your own -->
-    <source src="song.mp3" type="audio/mpeg">
-  </audio>
+  <!-- Hidden YouTube Player -->
+  <div id="ytContainer" style="display:none;">
+    <iframe
+            id="ytFrame"
+            width="0"
+            height="0"
+            src=""
+            frameborder="0"
+            allow="autoplay"
+            allowfullscreen>
+    </iframe>
+  </div>
+
 
   <script>
     /***********************
@@ -382,7 +432,7 @@
     const CONFIG = {
       herName: "Shraddha",          // <-- change to your gf name
       yourName: "Samyak",           // <-- change to your name
-      togetherSince: "2024-01-01",  // <-- YYYY-MM-DD (your anniversary/start date)
+      togetherSince: "2025-04-10",  // <-- YYYY-MM-DD (your anniversary/start date)
       nextDateTime: "2026-02-14T19:30:00", // <-- next date night (local time)
       secretNote: "You’re my favorite person, my safest place, and my best decision. Always. 💗",
 
@@ -402,12 +452,15 @@
       // Gallery images: replace with your photo URLs or file names in same folder
       // Example: "photo1.jpg", "photo2.jpg"
       photos: [
-        {src:"photo1.jpg", label:"Us 💕"},
-        {src:"photo2.jpg", label:"That day 😍"},
-        {src:"photo3.jpg", label:"My favorite view"},
-        {src:"photo4.jpg", label:"Cute moment"},
-        {src:"photo5.jpg", label:"Forever vibes"},
-        {src:"photo6.jpg", label:"Always you"},
+        {src:"photos/APS_0191 2.JPG", label:"Us 💕"},
+        {src:"photos/APS_1926 (1) 2.JPG", label:"That day 😍"},
+        {src:"photos/IMG_9891.jpg", label:"💏"},
+        {src:"photos/dce578a6-872f-4bc7-b2e8-a1908858e488.JPG", label:"My hottie 🔥"},
+        {src:"photos/f00d4e0d-f9f8-40d5-af90-cb2f5f0a65eb.JPG", label:"My sanskari wife"},
+        {src:"photos/IMG_5162 2.jpg", label:"My favorite view"},
+        {src:"photos/3fa23640-0b19-4f9e-8c8c-4df53eb6ee29.JPG", label:"My Rotlu 😭"},
+        {src:"photos/IMG_5359.jpg", label:"Fire🔥"},
+        {src:"photos/IMG_4958.jpg", label:"My Gulabo 💐"},
       ],
 
       // Promise card
@@ -425,8 +478,8 @@
     const $ = (id) => document.getElementById(id);
 
     // Set header text
-    $("title").textContent = `Happy Valentine’s Day, ${CONFIG.herName} ❤️`;
-    $("subtitle").textContent = `Made by ${CONFIG.yourName} — just to see you smile.`;
+    $("title").textContent = `Will you be my Valentine ? ${CONFIG.herName} ❤️`;
+<!--    $("subtitle").textContent = `Made by ${CONFIG.yourName} — just to see you smile.`;-->
     $("secretText").textContent = CONFIG.secretNote;
     $("promiseTitle").textContent = CONFIG.promiseTitle;
     $("promiseText").textContent = CONFIG.promiseText;
@@ -459,12 +512,22 @@
     CONFIG.photos.forEach((p, i) => {
       const cell = document.createElement("div");
       cell.className = "ph";
-      cell.title = p.label || `Photo ${i+1}`;
-      // if image missing, it will just show broken icon; you can replace src with real
-      cell.innerHTML = `<img src="${p.src}" alt="${p.label || "photo"}">`;
-      cell.addEventListener("click", () => openModal(p.src, p.label || `Memory ${i+1}`));
+
+      cell.innerHTML = `
+        <div class="photoFrame">
+          <img src="${p.src}" alt="${p.label || "photo"}">
+        </div>
+        <div class="photoLabel">${p.label || ""}</div>
+      `;
+
+      cell.addEventListener("click", () =>
+        openModal(p.src, p.label || `Memory ${i+1}`)
+      );
+
       gal.appendChild(cell);
     });
+
+
 
     // Modal logic
     const modal = $("modal");
@@ -481,37 +544,7 @@
     $("closeModal").addEventListener("click", closeModal);
     modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
 
-    // Date calculations
-    function formatDate(d){
-      return d.toLocaleDateString(undefined, {year:"numeric", month:"short", day:"numeric"});
-    }
 
-    const since = new Date(CONFIG.togetherSince + "T00:00:00");
-    $("sinceText").textContent = formatDate(since);
-
-    function updateCounters(){
-      const now = new Date();
-      const days = Math.floor((now - since) / (1000*60*60*24));
-      $("daysTogether").textContent = (days >= 0 ? days : 0).toString();
-
-      const next = new Date(CONFIG.nextDateTime);
-      let diff = next - now;
-
-      if (isNaN(next.getTime())){
-        $("nextDateCountdown").textContent = "Set a date 💌";
-      } else if (diff <= 0){
-        $("nextDateCountdown").textContent = "Today 😍";
-      } else {
-        const d = Math.floor(diff / (1000*60*60*24));
-        diff -= d*(1000*60*60*24);
-        const h = Math.floor(diff / (1000*60*60));
-        diff -= h*(1000*60*60);
-        const m = Math.floor(diff / (1000*60));
-        $("nextDateCountdown").textContent = `${d}d ${h}h ${m}m`;
-      }
-    }
-    updateCounters();
-    setInterval(updateCounters, 20_000);
 
     // Hearts animation
     const floaters = $("floaters");
@@ -539,45 +572,36 @@
 
     $("confettiBtn").addEventListener("click", () => spawnHeart(35));
 
-    // Music
-    const audio = $("bgMusic");
-    let playing = false;
-    $("startMusicBtn").addEventListener("click", async () => {
-      try{
-        if(!playing){
-          await audio.play();
-          playing = true;
-          $("startMusicBtn").textContent = "Pause 🎶";
-          $("secretNote").classList.remove("hidden");
-          spawnHeart(25);
-        } else {
-          audio.pause();
-          playing = false;
-          $("startMusicBtn").textContent = "Play our vibe 🎶";
-        }
-      } catch(err){
-        alert("Music couldn’t start (browser block). Add a song.mp3 in the same folder, then click again.");
+    // YouTube Music - Tujhe Dekha To Yeh Jaana Sanam
+    let ytPlaying = false;
+    const ytFrame = document.getElementById("ytFrame");
+    const playBtn = document.getElementById("startMusicBtn");
+
+    playBtn.addEventListener("click", () => {
+
+      if (!ytPlaying) {
+        ytFrame.src =
+          "https://www.youtube.com/embed/Tq52ew1vM4I?autoplay=1&loop=1&playlist=Tq52ew1vM4I";
+
+        ytPlaying = true;
+        playBtn.textContent = "Pause 🎶";
+        spawnHeart(30);
+
+      } else {
+        ytFrame.src = "";
+        ytPlaying = false;
+        playBtn.textContent = "Play our vibe 🎶";
       }
+
     });
 
-    // Copy share message
-    $("copyLinkBtn").addEventListener("click", async () => {
-      const txt = CONFIG.shareText(CONFIG.herName, CONFIG.yourName);
-      try{
-        await navigator.clipboard.writeText(txt);
-        $("copyLinkBtn").textContent = "Copied ✅";
-        setTimeout(()=> $("copyLinkBtn").textContent = "Copy message 📩", 1400);
-      } catch(e){
-        prompt("Copy this message:", txt);
-      }
-    });
+
+
 
     // Valentine question
     const answerBox = $("answerBox");
     $("yesBtn").addEventListener("click", () => {
-      answerBox.classList.remove("hidden");
-      answerBox.innerHTML = `YAYYY 💖<br/>Okay ${CONFIG.herName}, it’s official: you’re my Valentine forever. <br/><span class="muted">Now come here… 🫶</span>`;
-      spawnHeart(50);
+      window.location.href = "page2.html";
     });
 
     // No button runs away 😄
@@ -600,8 +624,19 @@
 
     // Personalize hero message slightly
     const hero = $("heroMsg");
-    hero.innerHTML = `Hey <b>${CONFIG.herName}</b> — I don’t need a perfect day—just <b>you</b>. So I made this little page to remind you how loved you are.`;
+    hero.innerHTML = `I don’t need a perfect day just, <b>you</b>. So I made this little thing to remind you how loved you are.`;
 
   </script>
+  <!-- YouTube Background Music (Tujhe Dekha To Yeh Jaana Sanam) -->
+  <iframe
+          width="0"
+          height="0"
+          src="https://www.youtube.com/embed/Tq52ew1vM4I?autoplay=1&loop=1&playlist=Tq52ew1vM4I&controls=0&mute=0"
+          title="YouTube video player"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+  ></iframe>
+
 </body>
 </html>
